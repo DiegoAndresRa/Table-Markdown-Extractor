@@ -2,16 +2,26 @@
 
 web_page=$1
 table_file=$2
+num_table=$3
 
 html_file='input.html'
+
 # Get source html code
 curl -o $html_file $web_page &>/dev/null
 
 # Get line from the begining and end of the table
-limits=($(grep -n -E '<\/?table[^>]*>' $html_file | head -n 2 | awk -F: '{print $1}'))
+bgs=($(grep -n -E '<table[^>]*>' $html_file | awk -F: '{print $1}'))
+ends=($(grep -n -E '</table>' $html_file | awk -F: '{print $1}'))
 
-bg=${limits[0]}
-end=${limits[1]}
+
+bg=${bgs[$num_table]}
+end=${ends[$num_table]}
+
+if [ -z "$bg" -o -z "$end" ];then 
+    echo "Error: Number of table" >&2
+    exit 1
+fi
+  
 
 # Get table's code
 sed -n "$bg,$end p" $html_file > $table_file
