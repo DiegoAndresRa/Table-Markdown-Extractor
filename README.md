@@ -2,8 +2,16 @@
     <img src='https://github.com/DiegoAndresRa/Logos/blob/main/HTML_to_MD.png' width='170px'>
     <h1>Table Markdown Extractor</h1>
 </div>
+
 A Python tool designed to extract tables from any webpage and convert them into Markdown format. 
 Easily integrate extracted tables into your Markdown documents for notes, documentation, or other projects.
+
+<div align='center'>
+    <img src='https://github.com/DiegoAndresRa/Logos/blob/main/htmlToMD.gif' width='600px'>
+</div>
+
+
+
 
 ## Usage
 ```bash
